@@ -320,4 +320,119 @@ footer {
         margin-bottom: 1rem;
     }
 }
+/* ---------- HERO SECTION ---------- */
+.hero {
+    background: linear-gradient(135deg, rgba(255,107,53,0.9), rgba(0,140,140,0.9)),
+                url('images/hero-bg.jpg') center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 5rem 2rem;
+}
+.hero-content h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 1.5rem auto;
+}
+
+/* ---------- HOW IT WORKS ---------- */
+.how-it-works {
+    background: #f9f9f9;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+.how-it-works h2 {
+    font-size: 2rem;
+    color: #FF6B35;
+    margin-bottom: 2rem;
+}
+.steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.step {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    max-width: 220px;
+    flex: 1;
+}
+.step-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+}
+.arrow {
+    font-size: 2rem;
+    color: #008C8C;
+}
+
+/* ---------- WHY JOIN ---------- */
+.why-join {
+    padding: 4rem 2rem;
+    background: #fff;
+    text-align: center;
+}
+.why-join h2 {
+    color: #FF6B35;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+.benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+.benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    text-align: left;
+}
+.benefit .icon {
+    font-size: 1.5rem;
+}
+
+/* ---------- TESTIMONIALS ---------- */
+.testimonials {
+    background: #f9f9f9;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+.testimonials h2 {
+    color: #FF6B35;
+    margin-bottom: 2rem;
+}
+.testimonial-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+.testimonial {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    max-width: 300px;
+}
+
+/* ---------- FINAL CTA ---------- */
+.final-cta {
+    background: #008C8C;
+    color: #fff;
+    text-align: center;
+    padding: 3rem 2rem;
+}
+.final-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
 
