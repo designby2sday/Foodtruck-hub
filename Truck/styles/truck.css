@@ -435,4 +435,51 @@ footer {
     font-size: 2rem;
     margin-bottom: 1.5rem;
 }
+@media (max-width: 700px) {
+    .steps {
+        flex-direction: column;  /* stacks the steps on mobile */
+        gap: 1rem;
+    }
+    .arrow {
+        display: none; /* hides arrows on small screens */
+    }
+}
+/* ---------- PAYWALL PAGE ---------- */
+.paywall {
+    text-align: center;
+    padding: 4rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.pricing-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.pricing-box h3 {
+    color: #FF6B35;
+    font-size: 1.5rem;
+}
+.price {
+    font-size: 2rem;
+    color: #008C8C;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+.pricing-box ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+.pricing-box li {
+    margin: 0.5rem 0;
+    font-weight: 500;
+}
+.pricing-box .note {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
 
