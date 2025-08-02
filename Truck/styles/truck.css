@@ -448,38 +448,123 @@ footer {
 .paywall {
     text-align: center;
     padding: 4rem 2rem;
-    max-width: 600px;
+    max-width: 1200px;
     margin: 0 auto;
 }
+
+/* ✅ FLEX CONTAINER FOR DESKTOP */
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* ✅ PRICING BOX STYLE */
 .pricing-box {
     background: #fff;
     border-radius: 12px;
     padding: 2rem;
-    margin-top: 2rem;
+    width: 280px;
+    text-align: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: relative;
+    transition: transform 0.3s ease;
 }
+
+.pricing-box:hover {
+    transform: translateY(-5px);
+}
+
 .pricing-box h3 {
     color: #FF6B35;
     font-size: 1.5rem;
+    margin-bottom: 0.5rem;
 }
+
 .price {
     font-size: 2rem;
     color: #008C8C;
     font-weight: bold;
     margin: 1rem 0;
 }
+
 .pricing-box ul {
     list-style: none;
     padding: 0;
     margin-bottom: 1.5rem;
 }
+
 .pricing-box li {
     margin: 0.5rem 0;
     font-weight: 500;
 }
-.pricing-box .note {
-    font-size: 0.85rem;
-    color: #666;
-    margin-top: 0.5rem;
+
+/* ✅ Highlighted middle tier */
+.highlighted {
+    position: relative;
+    z-index: 2;
+    border-radius: 12px;
+    padding: 2rem;
+    transform: scale(1.05);
+    background: #fff; /* keeps inside white */
+    border: 4px solid transparent; /* transparent border to hold animation */
+    background-clip: padding-box;
 }
 
+/* 🔥 Create animated border effect only */
+.highlighted::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 14px;
+    padding: 4px; /* thickness of animated border */
+    background: linear-gradient(270deg, #FF5F1F, #01F9C6, #01F9C6);
+    background-size: 600% 600%;
+    animation: borderMove 6s ease infinite;
+    -webkit-mask: 
+       linear-gradient(#fff 0 0) content-box, 
+       linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    z-index: -1;
+}
+
+.badge {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: #FF6B35;
+    color: #fff;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* ✅ STACK ON MOBILE */
+@media (max-width: 800px) {
+    .pricing-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .highlighted {
+        transform: scale(1);
+    }
+}
+
+@keyframes borderGlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
