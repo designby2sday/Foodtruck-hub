@@ -42,6 +42,14 @@
     </style>
 </head>
 <body>
+    <script>
+  const password = prompt("Enter Dev Access Password:");
+  if (password !== "taco-truck") {
+    alert("Access Denied");
+    window.location.href = "index.html";
+  }
+</script>
+
     <h1>🚧 Food Truck Hub – Dev Sitemap</h1>
     <p class="note">This page is for <strong>testing only</strong> and will be removed before launch.</p>
 
@@ -73,5 +81,7 @@
             <li><a href="dev-sitemap.html">🗺️ Refresh Dev Sitemap</a></li>
         </ul>
     </div>
+    <script src="scripts/global.js"></script>
+
 </body>
 </html>

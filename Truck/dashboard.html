@@ -1,71 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Truck Hub – Find Events</title>
-    <link rel="stylesheet" href="styles/truck.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Truck Hub – Dashboard</title>
+  <link rel="stylesheet" href="styles/truck.css">
 </head>
 <body>
-    <header>
-        <img src="images/logo-placeholder.png" alt="Food Truck Hub Logo" class="logo">
-        <nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="login.html">Login</a></li>
-    <li><a href="signup.html">Sign Up</a></li>
-    <li><a href="dashboard.html">Dashboard</a></li>
-    <li><a href="#" class="find-events-link">Find Events</a></li>
-  </ul>
-</nav>
-    </header>
+  <!-- ✅ HEADER -->
+  <header>
+    <img src="images/logo-placeholder.png" alt="Food Truck Hub Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="find-events.html" class="find-events-link">Find Events</a></li>
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="paywall.html">Subscription</a></li>
+        <li><a href="login.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <section class="dashboard-hero">
-            <h2>Upcoming Events Near You</h2>
-            <p>Browse festivals, fairs, and private events looking for food trucks.</p>
-        </section>
+  <!-- ✅ DASHBOARD HERO -->
+  <section class="dashboard-hero">
+    <h1>Welcome Back, Taco Time Truck! 🌮</h1>
+    <p>Your hub for managing your account, bookings, and payments.</p>
+  </section>
 
-        <section class="event-list">
-            <div class="event-card">
-                <h3>🎪 Summer Street Fair</h3>
-                <p><strong>Location:</strong> Richmond, VA</p>
-                <p><strong>Date:</strong> August 15, 2025</p>
-                <button class="apply-btn">View Details</button>
-            </div>
+  <!-- ✅ DASHBOARD GRID -->
+  <main class="dashboard-grid">
+    <!-- 📄 Account Overview Card -->
+   <div class="dash-card">
+  <h2>📄 Account Overview</h2>
+  <p><strong>Truck Name:</strong> <span id="truckNameDisplay">Taco Time Truck</span></p>
+  <p><strong>Owner:</strong> <span id="ownerNameDisplay">John Doe</span></p>
+  <p><strong>Membership Tier:</strong> <span class="badge-tier pro" id="planTierBadge">Pro</span></p>
+  <p><strong>Status:</strong> Active (Renews Oct 15, 2025)</p>
+  <button class="dash-btn" onclick="window.location.href='edit-profile.html'">Edit Profile</button>
+</div>
 
-            <div class="event-card">
-                <h3>🎉 Local Music Festival</h3>
-                <p><strong>Location:</strong> Charlottesville, VA</p>
-                <p><strong>Date:</strong> September 5, 2025</p>
-                <button class="apply-btn">View Details</button>
-            </div>
+    <!-- 📬 Calendar Linking Card -->
+    <div class="dash-card">
+      <h2>📬 Calendar Linking</h2>
+      <p>Connect your calendar to automatically sync booked events:</p>
+      <button class="dash-btn connect-btn">Link Google Calendar</button>
+      <button class="dash-btn connect-btn">Link Outlook</button>
+      <p class="note">Currently Linked: None</p>
+    </div>
 
-            <div class="event-card">
-                <h3>🏟️ Sports Arena Game Day</h3>
-                <p><strong>Location:</strong> Richmond, VA</p>
-                <p><strong>Date:</strong> October 2, 2025</p>
-                <button class="apply-btn">View Details</button>
-            </div>
-        </section>
-    </main>
+    <!-- 💳 Payment & Subscription Card -->
+    <div class="dash-card">
+      <h2>💳 Payment & Subscription</h2>
+      <p><strong>Plan:</strong> Pro – $19/month</p>
+      <p><strong>Next Billing:</strong> Oct 15, 2025</p>
+      <button class="dash-btn" onclick="window.location.href='paywall.html#elite'">Upgrade to Elite</button>
+<button class="dash-btn downgrade-btn" onclick="window.location.href='paywall.html#starter'">Downgrade to Starter</button>
 
-    <footer>
-        <p>© 2025 Food Truck Hub. All Rights Reserved.</p>
-    </footer>
+      <p class="note">Manage payment method through Stripe</p>
+    </div>
 
-    <script src="scripts/truck.js"></script>
-    <script>
-   // ✅ TEMPORARY DEV TOGGLE
-   // Switch between paywall & real Find Events page
-   const userIsPaid = true;  // ✅ Set to false to see Paywall instead
+    <!-- 📂 Recent Activity Card -->
+    <div class="dash-card">
+      <h2>📂 Recent Activity</h2>
+      <ul class="activity-list">
+        <li>🎟️ Booked: Richmond Food & Arts Festival (Sept 20, 2025)</li>
+        <li>✅ Payment processed: Pro Plan Renewal (Sept 15, 2025)</li>
+        <li>📆 Linked new calendar: Google Calendar</li>
+      </ul>
+      <button class="dash-btn">View All Activity</button>
+    </div>
+  </main>
 
-   document.querySelectorAll('a').forEach(link => {
-       if (link.textContent.includes("Find Events")) {
-           link.href = userIsPaid ? "find-events.html" : "paywall.html";
-       }
-   });
+  <!-- ✅ FOOTER -->
+  <footer>
+    <p>© 2025 Food Truck Hub. All Rights Reserved.</p>
+    <p style="text-align:center; font-size:0.7rem; opacity:0.3;">
+  <a href="dev-sitemap.html" style="color:white;" title="Dev Access">.</a>
+</p>
+  </footer>
+
+  <!-- ✅ DEV GLOBAL SCRIPT -->
+  <script src="scripts/global.js"></script>
+  <script>
+// ✅ Load profile data from localStorage
+const savedProfile = JSON.parse(localStorage.getItem('profileData')) || {};
+
+// ✅ Update the account overview if data exists
+if (savedProfile.truckName) {
+  document.getElementById('truckNameDisplay').innerText = savedProfile.truckName;
+}
+if (savedProfile.ownerName) {
+  document.getElementById('ownerNameDisplay').innerText = savedProfile.ownerName;
+}
+
+// ✅ Optional: Update plan badge color based on saved plan
+const savedPlan = localStorage.getItem("currentPlan") || "Pro";
+const badge = document.getElementById("planTierBadge");
+badge.innerText = savedPlan;
+
+if (savedPlan === "Starter") {
+  badge.className = "badge-tier starter";
+} else if (savedPlan === "Elite") {
+  badge.className = "badge-tier elite";
+} else {
+  badge.className = "badge-tier pro";
+}
 </script>
+
 </body>
 </html>
+<script src="scripts/global.js"></script>
+<script>
+  // ✅ Get plan choice from localStorage
+  const planName = localStorage.getItem("currentPlan") || "Pro";
 
+  // ✅ Update plan section
+  const planText = document.getElementById("currentPlanText");
+  const planPrice = document.getElementById("currentPlanPrice");
+
+  if (planName === "Starter") {
+      planText.textContent = "Starter";
+      planPrice.textContent = "$99 every 3 months";
+  } else if (planName === "Pro") {
+      planText.textContent = "Pro";
+      planPrice.textContent = "$299 every 6 months";
+  } else if (planName === "Elite") {
+      planText.textContent = "Elite";
+      planPrice.textContent = "$499 every year";
+  }
+</script>

@@ -26,58 +26,128 @@
         <p>Choose a plan that fits your truck — unlock events, apply instantly, and sync your schedule!</p>
 
         <div class="pricing-container">
-            <!-- Starter Tier -->
-            <div class="pricing-box">
-                <h3>Starter - 3 Month Plan</h3>
-                <p class="price">$99 Every 3 Months</p>
-                <ul>
-                    <li>✅ Access to local events</li>
-                    <li>✅ Apply to 7 events per month</li>
-                    <li>❌ No calendar sync</li>
-                </ul>
-                <a href="#" class="cta-btn">Choose Starter</a>
-            </div>
 
-            <!-- Pro Tier (highlighted) -->
-            <div class="pricing-box highlighted">
-                <h3>Pro - 6 Month Plan</h3>
-                <p class="price">$299 Every 6 Months</p>
-                <ul>
-                    <li>✅ Access to ALL events</li>
-                    <li>✅ Unlimited applications</li>
-                    <li>✅ Calendar integration</li>
-                    <li>✅ Priority vendor listings</li>
-                </ul>
-                <a href="#" class="cta-btn">Choose Pro</a>
-                <span class="badge">Most Popular</span>
-            </div>
+   <!-- Starter Tier -->
+<div class="pricing-box" id="starter">
+    <h3>Starter</h3>
+    <p class="price">$99 <span class="billing-cycle">/ 3 months</span></p>
+    <ul>
+        <li>✅ Access to local events</li>
+        <li>✅ Apply to 6 events per month</li>
+        <li>❌ No calendar sync</li>
+    </ul>
+    <a href="#" class="cta-btn" id="starter-btn">Choose Starter</a>
+</div>
 
-            <!-- Elite Tier -->
-            <div class="pricing-box">
-                <h3>Elite - 12 Months Access</h3>
-                <p class="price">$499 Every Year</p>
-                <ul>
-                    <li>✅ Everything in Pro</li>
-                    <li>✅ Featured placement in search</li>
-                    <li>✅ VIP support line</li>
-                    <li>✅ Access to exclusive “invite-only” events</li>
-                </ul>
-                <a href="#" class="cta-btn">Choose Elite</a>
-            </div>
-        </div>
+<!-- Pro Tier -->
+<div class="pricing-box highlighted" id="pro">
+    <h3>Pro</h3>
+    <p class="price">$299 <span class="billing-cycle">/ 6 months</span></p>
+    <ul>
+        <li>✅ Access to ALL events</li>
+        <li>✅ Unlimited applications</li>
+        <li>✅ Calendar integration</li>
+        <li>✅ Priority vendor listings</li>
+    </ul>
+    <a href="#" class="cta-btn" id="pro-btn">Choose Pro</a>
+    <span class="badge" id="pro-badge">Most Popular</span>
+</div>
+
+<!-- Elite Tier -->
+<div class="pricing-box" id="elite">
+    <h3>Elite</h3>
+    <p class="price">$499 <span class="billing-cycle">/ year</span></p>
+    <ul>
+        <li>✅ Everything in Pro</li>
+        <li>✅ Featured placement in search</li>
+        <li>✅ VIP support line</li>
+        <li>✅ Access to exclusive “invite-only” events</li>
+    </ul>
+    <a href="#" class="cta-btn" id="elite-btn">Choose Elite</a>
+</div>
     </main>
 
     <!-- ✅ FOOTER -->
     <footer>
         <p>© 2025 Food Truck Hub. All Rights Reserved.</p>
     </footer>
-    <script>
-   // ✅ TEMPORARY DEV TOGGLE
-   const userIsPaid = true;  // ✅ change to false to force paywall
+   <script src="scripts/global.js"></script>
+<script>
+  const currentPlan = localStorage.getItem("currentPlan") || "Pro";
 
-   document.querySelectorAll('a.find-events-link').forEach(link => {
-       link.href = userIsPaid ? "find-events.html" : "paywall.html";
-   });
+  // ✅ Highlight the current plan & disable its button
+  document.querySelectorAll('.pricing-box').forEach(box => {
+    box.classList.remove('highlighted');
+
+    const badge = box.querySelector('.badge');
+    if (badge && badge.id === 'pro-badge') {
+        badge.style.display = "inline"; // Show Most Popular badge unless Pro is current
+    }
+  });
+
+  const selectedBox = document.getElementById(currentPlan.toLowerCase());
+  if (selectedBox) {
+    selectedBox.classList.add('highlighted');
+
+    // ✅ Add "Current Plan" badge
+    const currentBadge = document.createElement('span');
+    currentBadge.classList.add('current-plan-badge');
+    currentBadge.innerText = "Current Plan";
+    selectedBox.appendChild(currentBadge);
+
+    // ✅ Hide "Most Popular" if user is already on Pro
+    if (currentPlan === "Pro") {
+      const proBadge = document.getElementById('pro-badge');
+      if (proBadge) proBadge.style.display = "none";
+    }
+
+    // ✅ Disable the button for the current plan
+    const currentBtn = selectedBox.querySelector('.cta-btn');
+    if (currentBtn) {
+      currentBtn.innerText = "Your Current Plan";
+      currentBtn.style.background = "#ccc";
+      currentBtn.style.cursor = "not-allowed";
+      currentBtn.addEventListener('click', (e) => e.preventDefault());
+    }
+  }
+
+  // ✅ Mock Plan Switching for other buttons
+  document.querySelectorAll('.cta-btn').forEach(button => {
+    if (button.innerText !== "Your Current Plan") {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        const planName = this.closest('.pricing-box').querySelector('h3').innerText;
+
+        // Save new plan
+        localStorage.setItem("currentPlan", planName);
+
+        alert(`✅ You have successfully switched to the ${planName} Plan!`);
+
+        // Redirect back to dashboard
+        window.location.href = 'dashboard.html';
+      });
+    }
+  });
 </script>
+
+      // ✅ Save plan to localStorage for Dashboard
+      localStorage.setItem("currentPlan", planName);
+
+      alert(`✅ You have successfully switched to the ${planName} Plan!`);
+
+      // ✅ Redirect back to Dashboard
+      window.location.href = 'dashboard.html';
+    });
+  });
+</script>
+
+      
+      // For testing: Send back to dashboard
+      window.location.href = 'dashboard.html';
+    });
+  });
+</script>
+<script src="scripts/global.js"></script>
+
 </body>
 </html>
