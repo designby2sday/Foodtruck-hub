@@ -15,7 +15,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="login.html">Login</a></li>
                 <li><a href="signup.html">Sign Up</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="paywall.html">Dashboard</a></li>
             </ul>
         </nav>
     </header>
@@ -71,5 +71,13 @@
     <footer>
         <p>© 2025 Food Truck Hub. All Rights Reserved.</p>
     </footer>
+    <script>
+   // ✅ TEMPORARY DEV TOGGLE
+   const userIsPaid = true;  // ✅ change to false to force paywall
+
+   document.querySelectorAll('a.find-events-link').forEach(link => {
+       link.href = userIsPaid ? "find-events.html" : "paywall.html";
+   });
+</script>
 </body>
 </html>

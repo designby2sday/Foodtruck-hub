@@ -10,12 +10,14 @@
     <header>
         <img src="images/logo-placeholder.png" alt="Food Truck Hub Logo" class="logo">
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="paywall.html" class="active">Find Events</a></li>
-            </ul>
-        </nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="signup.html">Sign Up</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="#" class="find-events-link">Find Events</a></li>
+  </ul>
+</nav>
     </header>
 
     <main>
@@ -53,5 +55,17 @@
     </footer>
 
     <script src="scripts/truck.js"></script>
+    <script>
+   // ✅ TEMPORARY DEV TOGGLE
+   // Switch between paywall & real Find Events page
+   const userIsPaid = true;  // ✅ Set to false to see Paywall instead
+
+   document.querySelectorAll('a').forEach(link => {
+       if (link.textContent.includes("Find Events")) {
+           link.href = userIsPaid ? "find-events.html" : "paywall.html";
+       }
+   });
+</script>
 </body>
 </html>
+
