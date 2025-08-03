@@ -817,3 +817,7 @@ footer {
 .cancel-btn:hover {
     background: #bbb;
 }
+.vendor-link {
+   flex-basis: 100%; /* forces it to span full width */
+   text-align: center;
+}
