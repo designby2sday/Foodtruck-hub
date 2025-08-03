@@ -111,6 +111,50 @@ if (savedPlan === "Starter") {
   badge.className = "badge-tier pro";
 }
 </script>
+<script>
+// ✅ Load saved calendar links from localStorage
+let linkedCalendars = JSON.parse(localStorage.getItem('linkedCalendars')) || {
+  google: false,
+  outlook: false
+};
+
+// ✅ Update button text and status message
+function updateCalendarUI() {
+  document.getElementById('googleCalendarBtn').innerText = linkedCalendars.google ? "Unlink Google Calendar" : "Link Google Calendar";
+  document.getElementById('outlookCalendarBtn').innerText = linkedCalendars.outlook ? "Unlink Outlook" : "Link Outlook";
+
+  // ✅ Build status message dynamically
+  let statusText = "Currently Linked: ";
+  if (linkedCalendars.google && linkedCalendars.outlook) {
+    statusText += "Google & Outlook";
+  } else if (linkedCalendars.google) {
+    statusText += "Google Calendar";
+  } else if (linkedCalendars.outlook) {
+    statusText += "Outlook Calendar";
+  } else {
+    statusText += "None";
+  }
+  document.getElementById('calendarStatus').innerText = statusText;
+}
+
+// ✅ Attach click handlers
+document.getElementById('googleCalendarBtn').addEventListener('click', () => {
+  linkedCalendars.google = !linkedCalendars.google;
+  localStorage.setItem('linkedCalendars', JSON.stringify(linkedCalendars));
+  alert(linkedCalendars.google ? "✅ Google Calendar Linked!" : "❌ Google Calendar Unlinked.");
+  updateCalendarUI();
+});
+
+document.getElementById('outlookCalendarBtn').addEventListener('click', () => {
+  linkedCalendars.outlook = !linkedCalendars.outlook;
+  localStorage.setItem('linkedCalendars', JSON.stringify(linkedCalendars));
+  alert(linkedCalendars.outlook ? "✅ Outlook Linked!" : "❌ Outlook Unlinked.");
+  updateCalendarUI();
+});
+
+// ✅ Initialize UI on page load
+updateCalendarUI();
+</script>
 
 </body>
 </html>
