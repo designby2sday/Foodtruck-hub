@@ -51,6 +51,89 @@
   <p class="note" id="calendarStatus">
     Currently Linked: None
   </p>
+   
+      <script>
+// ✅ Load saved calendar links and activity from localStorage
+let linkedCalendars = JSON.parse(localStorage.getItem('linkedCalendars')) || {
+  google: false,
+  outlook: false
+};
+let activityLog = JSON.parse(localStorage.getItem('activityLog')) || [];
+
+// ✅ Function to render activity
+function renderActivity() {
+  const activityList = document.getElementById('activityList');
+  activityList.innerHTML = ""; // clear old items
+
+  if (activityLog.length === 0) {
+    activityList.innerHTML = "<li>No recent activity.</li>";
+    return;
+  }
+
+  activityLog.slice(-5).reverse().forEach(item => { // show last 5 activities
+    const li = document.createElement('li');
+    li.textContent = item;
+    activityList.appendChild(li);
+  });
+}
+
+// ✅ Update UI for calendar buttons & status
+function updateCalendarUI() {
+  document.getElementById('googleCalendarBtn').innerText = linkedCalendars.google ? "Unlink Google Calendar" : "Link Google Calendar";
+  document.getElementById('outlookCalendarBtn').innerText = linkedCalendars.outlook ? "Unlink Outlook" : "Link Outlook";
+
+  let statusText = "Currently Linked: ";
+  if (linkedCalendars.google && linkedCalendars.outlook) {
+    statusText += "Google & Outlook";
+  } else if (linkedCalendars.google) {
+    statusText += "Google Calendar";
+  } else if (linkedCalendars.outlook) {
+    statusText += "Outlook Calendar";
+  } else {
+    statusText += "None";
+  }
+  document.getElementById('calendarStatus').innerText = statusText;
+
+  renderActivity();
+}
+
+// ✅ Add to activity log
+function addActivity(message) {
+  const timestamp = new Date().toLocaleString();
+  activityLog.push(`${timestamp} – ${message}`);
+  localStorage.setItem('activityLog', JSON.stringify(activityLog));
+  renderActivity();
+}
+
+// ✅ Button Events
+document.getElementById('googleCalendarBtn').addEventListener('click', () => {
+  linkedCalendars.google = !linkedCalendars.google;
+  localStorage.setItem('linkedCalendars', JSON.stringify(linkedCalendars));
+  addActivity(linkedCalendars.google ? "✅ Linked Google Calendar" : "❌ Unlinked Google Calendar");
+  alert(linkedCalendars.google ? "✅ Google Calendar Linked!" : "❌ Google Calendar Unlinked.");
+  updateCalendarUI();
+});
+
+document.getElementById('outlookCalendarBtn').addEventListener('click', () => {
+  linkedCalendars.outlook = !linkedCalendars.outlook;
+  localStorage.setItem('linkedCalendars', JSON.stringify(linkedCalendars));
+  addActivity(linkedCalendars.outlook ? "✅ Linked Outlook Calendar" : "❌ Unlinked Outlook Calendar");
+  alert(linkedCalendars.outlook ? "✅ Outlook Linked!" : "❌ Outlook Unlinked.");
+  updateCalendarUI();
+});
+
+// ✅ Clear Activity Button
+document.getElementById('clearActivityBtn').addEventListener('click', () => {
+  if (confirm("Clear all recent activity?")) {
+    activityLog = [];
+    localStorage.setItem('activityLog', JSON.stringify(activityLog));
+    renderActivity();
+  }
+});
+
+// ✅ Initialize UI
+updateCalendarUI();
+</script>
 </div>
 
     <!-- 💳 Payment & Subscription Card -->
@@ -65,15 +148,15 @@
     </div>
 
     <!-- 📂 Recent Activity Card -->
-    <div class="dash-card">
-      <h2>📂 Recent Activity</h2>
-      <ul class="activity-list">
-        <li>🎟️ Booked: Richmond Food & Arts Festival (Sept 20, 2025)</li>
-        <li>✅ Payment processed: Pro Plan Renewal (Sept 15, 2025)</li>
-        <li>📆 Linked new calendar: Google Calendar</li>
-      </ul>
-      <button class="dash-btn">View All Activity</button>
-    </div>
+   <!-- 📂 Recent Activity Card -->
+<div class="dash-card">
+  <h2>📂 Recent Activity</h2>
+  <ul class="activity-list" id="activityList">
+    <!-- Activity items will populate here dynamically -->
+  </ul>
+  <button class="dash-btn" id="clearActivityBtn">Clear Activity</button>
+</div>
+
   </main>
 
   <!-- ✅ FOOTER -->
@@ -113,7 +196,7 @@ if (savedPlan === "Starter") {
 </script>
 <script>
 // ✅ Load saved calendar links from localStorage
-let linkedCalendars = JSON.parse(localStorage.getItem('linkedCalendars')) || {
+linkedCalendars = JSON.parse(localStorage.getItem('linkedCalendars')) || {
   google: false,
   outlook: false
 };
