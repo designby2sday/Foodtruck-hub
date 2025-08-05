@@ -821,3 +821,35 @@ footer {
    flex-basis: 100%; /* forces it to span full width */
    text-align: center;
 }
+.upgrade-container {
+  text-align: center;
+  padding: 2rem;
+}
+.pricing-tiers {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.pricing-card {
+  background: #f7f2e8;
+  border: 2px solid #D4AF37;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 200px;
+}
+.pricing-card h2 {
+  margin-top: 0;
+}
+.pricing-card button {
+  background-color: #D4AF37;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  cursor: not-allowed;
+}
+.login-link {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}

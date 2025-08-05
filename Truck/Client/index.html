@@ -16,7 +16,10 @@
     <li><a href="login.html">Login</a></li>
     <li><a href="signup.html">Sign Up</a></li>
     <li><a href="dashboard.html">Dashboard</a></li>
-    <li><a href="#" class="find-events-link">Find Events</a></li>
+    <li><a href="#" id="find-events-link" onclick="handleFindEventsClick(event)">Find Events</a></li>
+
+    
+
   </ul>
 </nav>
 
@@ -114,5 +117,25 @@
     </footer>
 
     <script src="scripts/app.js"></script>
+    <script>
+  function handleFindEventsClick(event) {
+    event.preventDefault(); // stops the page from doing nothing or jumping to "#"
+
+    // Simulated user state
+    const user = {
+      isLoggedIn: true,
+      isPremium: false
+    };
+
+    if (!user.isLoggedIn) {
+      window.location.href = 'login.html';
+    } else if (!user.isPremium) {
+      window.location.href = 'find-events-upgrade.html';
+    } else {
+      window.location.href = 'find-events.html';
+    }
+  }
+</script>
+
 </body>
 </html>

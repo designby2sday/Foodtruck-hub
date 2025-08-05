@@ -1,0 +1,16 @@
+[
+  {
+    "id": "evt001",
+    "name": "Farmville First Fridays",
+    "date": "2025-08-16",
+    "location": "Farmville, VA",
+    "status": "open"
+  },
+  {
+    "id": "evt002",
+    "name": "Crewe Community Carnival",
+    "date": "2025-08-20",
+    "location": "Crewe, VA",
+    "status": "open"
+  }
+]

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upgrade to Access – Food Truck Hub</title>
+  <link rel="stylesheet" href="styles/truck.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      background-color: #B02E30;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .upgrade-container {
+      text-align: center;
+      padding: 2rem;
+    }
+    .pricing-tiers {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .pricing-card {
+      background: #fff;
+      border: 2px solid #B02E30;
+      border-radius: 10px;
+      padding: 1.5rem;
+      width: 260px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    .pricing-card.middle {
+      background-color: #B02E30;
+      color: #fff;
+      transform: scale(1.05);
+      border-color: #FFCC00;
+    }
+    .pricing-card h2 {
+      margin-top: 0;
+      color: inherit;
+    }
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: inherit;
+    }
+    .tier-description {
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+      color: inherit;
+    }
+    .features {
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      padding-left: 1rem;
+    }
+    .features li {
+      margin: 0.25rem 0;
+    }
+    .features li::before {
+      content: '\2713';
+      color: #FFCC00;
+      display: inline-block;
+      width: 1rem;
+      margin-left: -1rem;
+    }
+    .pricing-card.middle .features li::before {
+      color: #fff;
+    }
+    .pricing-card button {
+      margin-top: 1rem;
+      background-color: #FFCC00;
+      color: #000;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: not-allowed;
+    }
+    .login-link {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+    .login-link a {
+      color: #B02E30;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Food Truck Hub</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="find-events-upgrade.html" class="active">Find Events</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="upgrade-container">
+    <h2>🚫 Find Events is a Premium Feature</h2>
+    <p>Unlock your access by choosing a plan below.</p>
+
+    <div class="pricing-tiers">
+
+      <!-- 3 Month Tier -->
+      <div class="pricing-card">
+        <h2>3 Month Access</h2>
+        <p class="price">$99</p>
+        <p class="tier-description">Access events with no calendar syncing.</p>
+        <ul class="features">
+          <li>View and apply for events</li>
+          <li>Standard support</li>
+          <li>No calendar syncing</li>
+        </ul>
+        <button disabled>Coming Soon</button>
+      </div>
+
+      <!-- 6 Month Tier (Highlighted) -->
+      <div class="pricing-card middle">
+        <h2>6 Month Access</h2>
+        <p class="price">$299</p>
+        <p class="tier-description">Standard access to all events with added convenience.</p>
+        <ul class="features">
+          <li>Everything in 3-Month plan</li>
+          <li>Calendar syncing</li>
+          <li>Email reminders</li>
+          <li>Limited vendor communication</li>
+        </ul>
+        <button disabled>Most Popular</button>
+      </div>
+
+      <!-- 12 Month Tier -->
+      <div class="pricing-card">
+        <h2>12 Month Access</h2>
+        <p class="price">$499</p>
+        <p class="tier-description">Full premium features and support.</p>
+        <ul class="features">
+          <li>Everything in 6-Month plan</li>
+          <li>Premium calendar tools</li>
+          <li>Priority support</li>
+          <li>Featured vendor placement</li>
+          <li>Early access to top events</li>
+          <li>Direct messaging with vendors</li>
+        </ul>
+        <button disabled>Best Value</button>
+      </div>
+
+    </div>
+
+    <p class="login-link">Already a premium member? <a href="login.html">Log in</a></p>
+  </main>
+
+  <footer>
+    <p>© 2025 Food Truck Hub. All rights reserved.</p>
+  </footer>
+</body>
+</html>
