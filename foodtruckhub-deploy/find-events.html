@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Truck Hub – Find Events</title>
+    <link rel="stylesheet" href="styles/truck.css">
+</head>
+<body>
+    <!-- ✅ HEADER -->
+    <header>
+        <img src="images/logo-placeholder.png" alt="Food Truck Hub Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="find-events.html">Find Events</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ✅ FILTER SECTION -->
+    <section class="filter-bar">
+        <h2>Find Events in Virginia</h2>
+        <div class="filters">
+            <select id="cityFilter">
+                <option value="all">All Cities</option>
+                <option value="Farmville">Farmville</option>
+                <option value="Richmond">Richmond</option>
+                <option value="Lynchburg">Lynchburg</option>
+            </select>
+
+            <input type="date" id="dateFilter">
+
+            <button class="filter-btn" onclick="applyFilters()">Filter</button>
+        </div>
+    </section>
+
+    <!-- ✅ EVENTS LIST -->
+    <section class="event-list" id="eventList">
+        <!-- Events will load here via JS -->
+    </section>
+
+    <!-- ✅ FOOTER -->
+    <footer>
+        <p>© 2025 Food Truck Hub. All Rights Reserved.</p>
+    </footer>
+
+    <!-- ✅ IMPORT MOCK DATA + JS -->
+    <script type="module">
+        import mockEvents from './data/mock-events.js';
+
+        const eventList = document.getElementById('eventList');
+
+        // Load events
+        function displayEvents(events) {
+            eventList.innerHTML = ""; // clear previous results
+            if (events.length === 0) {
+                eventList.innerHTML = "<p class='no-results'>No events found.</p>";
+                return;
+            }
+
+            events.forEach(event => {
+                const card = document.createElement('div');
+                card.classList.add('event-card');
+                card.innerHTML = `
+                    <h3>${event.name}</h3>
+                    <p><strong>Location:</strong> ${event.location}</p>
+                    <p><strong>Date:</strong> ${event.date}</p>
+                    <p><strong>Hosted By:</strong> ${event.vendor}</p>
+                    <p>${event.description}</p>
+                    <button class="book-btn" onclick="bookEvent(${event.id})">${event.booked ? 'Booked' : 'Book Event'}</button>
+                `;
+                eventList.appendChild(card);
+            });
+        }
+
+        // Initial load
+        displayEvents(mockEvents);
+
+        // Filter function
+        window.applyFilters = function () {
+            const city = document.getElementById('cityFilter').value;
+            const date = document.getElementById('dateFilter').value;
+
+            let filteredEvents = mockEvents;
+
+            if (city !== "all") {
+                filteredEvents = filteredEvents.filter(e => e.location.includes(city));
+            }
+            if (date) {
+                filteredEvents = filteredEvents.filter(e => e.date === date);
+            }
+
+            displayEvents(filteredEvents);
+        }
+
+        // Book event function (placeholder)
+        window.bookEvent = function (id) {
+            const event = mockEvents.find(e => e.id === id);
+            if (event) {
+                event.booked = true;
+                alert(`✅ You booked: ${event.name}`);
+                displayEvents(mockEvents);
+            }
+        }
+    </script>
+    <script src="scripts/global.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Truck Hub – Dashboard</title>
+  <link rel="stylesheet" href="styles/truck.css">
+</head>
+<body>
+  <!-- ✅ HEADER -->
+  <header>
+    <img src="images/logo-placeholder.png" alt="Food Truck Hub Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="find-events.html" class="find-events-link">Find Events</a></li>
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="paywall.html">Subscription</a></li>
+        <li><a href="login.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ✅ DASHBOARD HERO -->
+  <section class="dashboard-hero">
+    <h1>Welcome Back, Taco Time Truck! 🌮</h1>
+    <p>Your hub for managing your account, bookings, and payments.</p>
+  </section>
+
+  <!-- ✅ DASHBOARD GRID -->
+  <main class="dashboard-grid">
+    <!-- 📄 Account Overview Card -->
+   <div class="dash-card">
+  <h2>📄 Account Overview</h2>
+  <p><strong>Truck Name:</strong> <span id="truckNameDisplay">Taco Time Truck</span></p>
+  <p><strong>Owner:</strong> <span id="ownerNameDisplay">John Doe</span></p>
+  <p><strong>Membership Tier:</strong> <span class="badge-tier pro" id="planTierBadge">Pro</span></p>
+  <p><strong>Status:</strong> Active (Renews Oct 15, 2025)</p>
+  <button class="dash-btn" onclick="window.location.href='edit-profile.html'">Edit Profile</button>
+</div>
+
+    <!-- 📬 Calendar Linking Card -->
+   <!-- 📬 Calendar Linking Card -->
+<div class="dash-card">
+  <h2>📬 Calendar Linking</h2>
+  <p>Connect your calendar to automatically sync booked events:</p>
+
+  <button class="dash-btn connect-btn" id="googleCalendarBtn">Link Google Calendar</button>
+  <button class="dash-btn connect-btn" id="outlookCalendarBtn">Link Outlook</button>
+
+  <p class="note" id="calendarStatus">
+    Currently Linked: None
+  </p>
+   
+      <script>
+// ✅ Load saved calendar links and activity from localStorage
+let linkedCalendars = JSON.parse(localStorage.getItem('linkedCalendars')) || {
+  google: false,
+  outlook: false
+};
+let activityLog = JSON.parse(localStorage.getItem('activityLog')) || [];
+
+// ✅ Function to render activity
+function renderActivity() {
+  const activityList = document.getElementById('activityList');
+  activityList.innerHTML = ""; // clear old items
+
+  if (activityLog.length === 0) {
+    activityList.innerHTML = "<li>No recent activity.</li>";
+    return;
+  }
+
+  activityLog.slice(-5).reverse().forEach(item => { // show last 5 activities
+    const li = document.createElement('li');
+    li.textContent = item;
+    activityList.appendChild(li);
+  });
+}
+
+// ✅ Update UI for calendar buttons & status
+function updateCalendarUI() {
+  document.getElementById('googleCalendarBtn').innerText = linkedCalendars.google ? "Unlink Google Calendar" : "Link Google Calendar";
+  document.getElementById('outlookCalendarBtn').innerText = linkedCalendars.outlook ? "Unlink Outlook" : "Link Outlook";
+
+  let statusText = "Currently Linked: ";
+  if (linkedCalendars.google && linkedCalendars.outlook) {
+    statusText += "Google & Outlook";
+  } else if (linkedCalendars.google) {
+    statusText += "Google Calendar";
+  } else if (linkedCalendars.outlook) {
+    statusText += "Outlook Calendar";
+  } else {
+    statusText += "None";
+  }
+  document.getElementById('calendarStatus').innerText = statusText;
+
+  renderActivity();
+}
+
+// ✅ Add to activity log
+function addActivity(message) {
+  const timestamp = new Date().toLocaleString();
+  activityLog.push(`${timestamp} – ${message}`);
+  localStorage.setItem('activityLog', JSON.stringify(activityLog));
+  renderActivity();
+}
+
+// ✅ Button Events
+document.getElementById('googleCalendarBtn').addEventListener('click', () => {
+  linkedCalendars.google = !linkedCalendars.google;
+  localStorage.setItem('linkedCalendars', JSON.stringify(linkedCalendars));
+  addActivity(linkedCalendars.google ? "✅ Linked Google Calendar" : "❌ Unlinked Google Calendar");
+  alert(linkedCalendars.google ? "✅ Google Calendar Linked!" : "❌ Google Calendar Unlinked.");
+  updateCalendarUI();
+});
+
+document.getElementById('outlookCalendarBtn').addEventListener('click', () => {
+  linkedCalendars.outlook = !linkedCalendars.outlook;
+  localStorage.setItem('linkedCalendars', JSON.stringify(linkedCalendars));
+  addActivity(linkedCalendars.outlook ? "✅ Linked Outlook Calendar" : "❌ Unlinked Outlook Calendar");
+  alert(linkedCalendars.outlook ? "✅ Outlook Linked!" : "❌ Outlook Unlinked.");
+  updateCalendarUI();
+});
+
+// ✅ Clear Activity Button
+document.getElementById('clearActivityBtn').addEventListener('click', () => {
+  if (confirm("Clear all recent activity?")) {
+    activityLog = [];
+    localStorage.setItem('activityLog', JSON.stringify(activityLog));
+    renderActivity();
+  }
+});
+
+// ✅ Initialize UI
+updateCalendarUI();
+</script>
+</div>
+
+    <!-- 💳 Payment & Subscription Card -->
+    <div class="dash-card">
+      <h2>💳 Payment & Subscription</h2>
+      <p><strong>Plan:</strong> Pro – $19/month</p>
+      <p><strong>Next Billing:</strong> Oct 15, 2025</p>
+      <button class="dash-btn" onclick="window.location.href='paywall.html#elite'">Upgrade to Elite</button>
+<button class="dash-btn downgrade-btn" onclick="window.location.href='paywall.html#starter'">Downgrade to Starter</button>
+
+      <p class="note">Manage payment method through Stripe</p>
+    </div>
+
+    <!-- 📂 Recent Activity Card -->
+   <!-- 📂 Recent Activity Card -->
+<div class="dash-card">
+  <h2>📂 Recent Activity</h2>
+  <ul class="activity-list" id="activityList">
+    <!-- Activity items will populate here dynamically -->
+  </ul>
+  <button class="dash-btn" id="clearActivityBtn">Clear Activity</button>
+</div>
+
+  </main>
+
+  <!-- ✅ FOOTER -->
+  <footer>
+    <p>© 2025 Food Truck Hub. All Rights Reserved.</p>
+    <p style="text-align:center; font-size:0.7rem; opacity:0.3;">
+  <a href="dev-sitemap.html" style="color:white;" title="Dev Access">.</a>
+</p>
+  </footer>
+
+  <!-- ✅ DEV GLOBAL SCRIPT -->
+  <script src="scripts/global.js"></script>
+  <script>
+// ✅ Load profile data from localStorage
+const savedProfile = JSON.parse(localStorage.getItem('profileData')) || {};
+
+// ✅ Update the account overview if data exists
+if (savedProfile.truckName) {
+  document.getElementById('truckNameDisplay').innerText = savedProfile.truckName;
+}
+if (savedProfile.ownerName) {
+  document.getElementById('ownerNameDisplay').innerText = savedProfile.ownerName;
+}
+
+// ✅ Optional: Update plan badge color based on saved plan
+const savedPlan = localStorage.getItem("currentPlan") || "Pro";
+const badge = document.getElementById("planTierBadge");
+badge.innerText = savedPlan;
+
+if (savedPlan === "Starter") {
+  badge.className = "badge-tier starter";
+} else if (savedPlan === "Elite") {
+  badge.className = "badge-tier elite";
+} else {
+  badge.className = "badge-tier pro";
+}
+</script>
+<script>
+// ✅ Load saved calendar links from localStorage
+linkedCalendars = JSON.parse(localStorage.getItem('linkedCalendars')) || {
+  google: false,
+  outlook: false
+};
+
+// ✅ Update button text and status message
+function updateCalendarUI() {
+  document.getElementById('googleCalendarBtn').innerText = linkedCalendars.google ? "Unlink Google Calendar" : "Link Google Calendar";
+  document.getElementById('outlookCalendarBtn').innerText = linkedCalendars.outlook ? "Unlink Outlook" : "Link Outlook";
+
+  // ✅ Build status message dynamically
+  let statusText = "Currently Linked: ";
+  if (linkedCalendars.google && linkedCalendars.outlook) {
+    statusText += "Google & Outlook";
+  } else if (linkedCalendars.google) {
+    statusText += "Google Calendar";
+  } else if (linkedCalendars.outlook) {
+    statusText += "Outlook Calendar";
+  } else {
+    statusText += "None";
+  }
+  document.getElementById('calendarStatus').innerText = statusText;
+}
+
+// ✅ Attach click handlers
+document.getElementById('googleCalendarBtn').addEventListener('click', () => {
+  linkedCalendars.google = !linkedCalendars.google;
+  localStorage.setItem('linkedCalendars', JSON.stringify(linkedCalendars));
+  alert(linkedCalendars.google ? "✅ Google Calendar Linked!" : "❌ Google Calendar Unlinked.");
+  updateCalendarUI();
+});
+
+document.getElementById('outlookCalendarBtn').addEventListener('click', () => {
+  linkedCalendars.outlook = !linkedCalendars.outlook;
+  localStorage.setItem('linkedCalendars', JSON.stringify(linkedCalendars));
+  alert(linkedCalendars.outlook ? "✅ Outlook Linked!" : "❌ Outlook Unlinked.");
+  updateCalendarUI();
+});
+
+// ✅ Initialize UI on page load
+updateCalendarUI();
+</script>
+
+</body>
+</html>
+<script src="scripts/global.js"></script>
+<script>
+  // ✅ Get plan choice from localStorage
+  const planName = localStorage.getItem("currentPlan") || "Pro";
+
+  // ✅ Update plan section
+  const planText = document.getElementById("currentPlanText");
+  const planPrice = document.getElementById("currentPlanPrice");
+
+  if (planName === "Starter") {
+      planText.textContent = "Starter";
+      planPrice.textContent = "$99 every 3 months";
+  } else if (planName === "Pro") {
+      planText.textContent = "Pro";
+      planPrice.textContent = "$299 every 6 months";
+  } else if (planName === "Elite") {
+      planText.textContent = "Elite";
+      planPrice.textContent = "$499 every year";
+  }
+</script>
