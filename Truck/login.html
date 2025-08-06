@@ -1,60 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Truck Hub – Truck Login</title>
-    <link rel="stylesheet" href="styles/truck.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Truck Hub – Truck Login</title>
+  <link rel="stylesheet" href="styles/truck.css" />
 </head>
 <body>
-    <header>
-        <img src="images/logo-placeholder.png" alt="Food Truck Hub Logo" class="logo">
-        <nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="login.html">Login</a></li>
-    <li><a href="signup.html">Sign Up</a></li>
-    <li><a href="dashboard.html">Dashboard</a></li>
-    <li><a href="#" class="find-events-link">Find Events</a></li>
-  </ul>
-</nav>
-    </header>
 
-    <main>
-        <section class="login-section">
-            <h2>Food Truck Login</h2>
-            <form class="login-form">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="you@example.com" required>
+  <!-- ✅ HEADER -->
+  <header>
+    <img src="images/logo-placeholder.png" alt="Food Truck Hub Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="#" class="find-events-link">Find Events</a></li>
+      </ul>
+    </nav>
+  </header>
 
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter your password" required>
+  <!-- ✅ MAIN CONTENT -->
+  <main>
+    <section class="login-section">
+      <h2>Food Truck Login</h2>
+      <form class="login-form">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="you@example.com" required />
 
-                <button type="submit" class="login-btn">Log In</button>
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required />
 
-                <p class="signup-link">Don’t have an account? <a href="#">Sign up here</a></p>
-            </form>
-        </section>
-    </main>
+        <button type="submit" class="login-btn">Log In</button>
 
-    <footer>
-        <p>© 2025 Food Truck Hub. All Rights Reserved.</p>
-        <p style="text-align:center; font-size:0.7rem; opacity:0.3;">
-  <a href="dev-sitemap.html" style="color:white;" title="Dev Access">.</a>
-</p>
+        <p class="signup-link">Don’t have an account? <a href="signup.html">Sign up here</a></p>
+      </form>
+    </section>
+  </main>
 
-    </footer>
+  <!-- ✅ FOOTER -->
+  <footer>
+    <p>© 2025 Food Truck Hub. All Rights Reserved.</p>
+    <p style="text-align:center; font-size:0.7rem; opacity:0.3;">
+      <a href="dev-sitemap.html" style="color:white;" title="Dev Access">.</a>
+    </p>
+  </footer>
 
-    <script src="scripts/truck.js"></script>
-    <script>
-   // ✅ TEMPORARY DEV TOGGLE
-   const userIsPaid = true;  // ✅ change to false to force paywall
+  <!-- ✅ FIXED SCRIPT ORDER -->
+  <script>
+    // TEMP: Simulate logged-in/paid status
+    const userIsPaid = true;
 
-   document.querySelectorAll('a.find-events-link').forEach(link => {
-       link.href = userIsPaid ? "find-events.html" : "paywall.html";
-   });
-</script>
-<script src="scripts/global.js"></script>
+    // Set Find Events link dynamically
+    document.querySelectorAll('a.find-events-link').forEach(link => {
+      link.href = userIsPaid ? "find-events.html" : "paywall.html";
+    });
+  </script>
+
+  <script>
+    // Auto-apply `.active` to current page in nav
+    const currentPage = window.location.pathname.split("/").pop().split("?")[0];
+
+    document.querySelectorAll("nav a").forEach(link => {
+      const linkPage = link.getAttribute("href").split("?")[0];
+      if (linkPage === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  </script>
+
+  <!-- Optional: Global JS -->
+  <script src="scripts/truck.js"></script>
+  <script src="scripts/global.js"></script>
 
 </body>
 </html>

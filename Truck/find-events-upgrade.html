@@ -2,86 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Find Events | Food Truck Hub</title>
-  <link rel="stylesheet" href="truck.css" />
+  <link rel="stylesheet" href="styles/truck.css" />
 </head>
 <body>
-   
-  <nav class="navbar">
-    <h1>Food Truck Hub</h1>
-    <a href="dashboard.html">Dashboard</a>
-  </nav>
 
-  <section class="paywall-section">
-    <h1 class="paywall-heading">Unlock Event Access</h1>
+  <!-- ✅ HEADER -->
+  <header>
+    <img src="images/logo-placeholder.png" alt="Food Truck Hub Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="find-events-upgrade.html" class="active">Find Events</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <div class="pricing-cards">
-      <div class="card">
-        <h2>Starter</h2>
-        <p class="price">$99</p>
-        <p class="term">Every 3 Months</p>
+  <!-- ✅ UPGRADE CARDS -->
+  <main class="paywall">
+    <h2>🎟️ Unlock Event Access</h2>
+    <p>Choose your plan to view, apply, and filter events across the state.</p>
+
+    <div class="pricing-container">
+
+      <!-- Starter Plan -->
+      <div class="pricing-box" id="starter-upgrade">
+        <h3>Starter</h3>
+        <p class="price">$99 <span class="billing-cycle">/ 3 months</span></p>
         <ul>
-          <li>Basic Event Access</li>
-          <li>Email Notifications</li>
+          <li>✅ Access to local events</li>
+          <li>✅ Apply to 6 events per month</li>
+          <li>❌ No calendar sync</li>
         </ul>
-        <button onclick="upgrade('starter')" class="select-btn">Choose Starter</button>
+        <a href="#" class="cta-btn" onclick="upgrade('Starter')">Choose Starter</a>
       </div>
 
-      <div class="card featured">
-        <h2>Pro</h2>
-        <p class="price">$299</p>
-        <p class="term">Every 6 Months</p>
+      <!-- Pro Plan with Popular Badge -->
+      <div class="pricing-box highlighted" id="pro-upgrade">
+        <h3>Pro</h3>
+        <p class="price">$299 <span class="billing-cycle">/ 6 months</span></p>
         <ul>
-          <li>All Starter Features</li>
-          <li>Calendar Integration</li>
-          <li>Priority Support</li>
+          <li>✅ Access to ALL events</li>
+          <li>✅ Unlimited applications</li>
+          <li>✅ Calendar integration</li>
+          <li>✅ Priority vendor listings</li>
         </ul>
-        <button onclick="upgrade('pro')" class="select-btn">Upgrade to Pro</button>
+        <a href="#" class="cta-btn" onclick="upgrade('Pro')">Choose Pro</a>
+        <span class="popular-badge" id="proBadge">Popular Choice</span>
       </div>
 
-      <div class="card">
-        <h2>Pro Elite</h2>
-        <p class="price">$499</p>
-        <p class="term">Yearly</p>
+      <!-- Elite Plan -->
+      <div class="pricing-box" id="elite-upgrade">
+        <h3>Elite</h3>
+        <p class="price">$499 <span class="billing-cycle">/ year</span></p>
         <ul>
-          <li>All Pro Features</li>
-          <li>Featured Listings</li>
-          <li>Direct Vendor Messaging</li>
+          <li>✅ Everything in Pro</li>
+          <li>✅ Featured placement in search</li>
+          <li>✅ VIP support line</li>
+          <li>✅ Access to invite-only events</li>
         </ul>
-        <button onclick="upgrade('elite')" class="select-btn">Go Elite</button>
+        <a href="#" class="cta-btn" onclick="upgrade('Elite')">Choose Elite</a>
       </div>
-    </div>
-  </section>
 
-  <section id="events" class="events-section" style="display:none;">
-    <h2>🎉 Events Near You</h2>
-    <div class="event-card">
-      <h3>Farmville First Fridays</h3>
-      <p>📍 Farmville, VA</p>
-      <p>📅 Sept 12, 2025</p>
     </div>
-    <div class="event-card">
-      <h3>Foodie Fest Lynchburg</h3>
-      <p>📍 Lynchburg, VA</p>
-      <p>📅 Sept 21, 2025</p>
-    </div>
-  </section>
+  </main>
 
+  <!-- ✅ FOOTER -->
+  <footer>
+    <p>© 2025 Food Truck Hub. All Rights Reserved.</p>
+  </footer>
+
+  <!-- ✅ SLAM-IN BADGE ANIMATION -->
   <script>
-    function upgrade(plan) {
-      localStorage.setItem("accessTier", plan);
-      document.querySelector(".paywall-section").style.display = "none";
-      document.getElementById("events").style.display = "block";
-      alert(`🎉 You've unlocked event access with the ${plan.toUpperCase()} plan!`);
-    }
+    window.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        const badge = document.getElementById("proBadge");
+        if (badge) badge.classList.add("pop");
+      }, 1500);
+    });
+  </script>
 
-    // If user already upgraded, skip paywall
-    const savedTier = localStorage.getItem("accessTier");
-    if (savedTier) {
-      document.querySelector(".paywall-section").style.display = "none";
-      document.getElementById("events").style.display = "block";
+  <!-- ✅ UPGRADE HANDLER -->
+  <script>
+    function upgrade(planName) {
+      localStorage.setItem("accessTier", planName);
+      alert(`✅ You've unlocked event access with the ${planName} plan!`);
+      window.location.href = "find-events.html";
     }
+  </script>
+
+  <!-- ✅ ACTIVE NAV LINK HIGHLIGHT -->
+  <script>
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll("nav a").forEach(link => {
+      const linkPage = link.getAttribute("href");
+      if (linkPage === currentPage) {
+        link.classList.add("active");
+      }
+    });
   </script>
 
 </body>
