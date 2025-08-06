@@ -875,4 +875,122 @@ section {
   padding: 2rem 1rem;
   text-align: center;
 }
+/* ---------- PAYWALL SECTION STYLES ---------- */
+.paywall-section {
+  padding: 4rem 1rem;
+  background: #fff;
+  text-align: center;
+}
+
+.paywall-heading {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #1C1C1C;
+}
+
+/* Cards Grid */
+.pricing-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Card Style */
+.card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+/* Featured Pro Card Glow */
+.card.featured::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  z-index: -1;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2EC4B6, #FF7F32, #FFD60A);
+  animation: glowPulse 6s linear infinite;
+}
+
+@keyframes glowPulse {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Text inside card */
+.card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #1C1C1C;
+}
+
+.price {
+  font-size: 2rem;
+  color: #E63946;
+  font-weight: bold;
+}
+
+.term {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.card ul li {
+  padding: 0.4rem 0;
+  color: #333;
+}
+
+/* CTA Button */
+.select-btn {
+  background: #FF7F32;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.select-btn:hover {
+  background: #e76d1c;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .pricing-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+}
 
