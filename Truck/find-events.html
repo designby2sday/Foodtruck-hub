@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="styles/truck.css">
 </head>
 <body>
+    <script>
+  const userTier = localStorage.getItem("accessTier");
+  if (!userTier) {
+    // Not upgraded — redirect to paywall
+    window.location.href = "paywall.html?ref=find-events.html";
+  }
+</script>
+
     <!-- ✅ HEADER -->
     <header>
         <img src="images/logo-placeholder.png" alt="Food Truck Hub Logo" class="logo">
@@ -49,6 +57,7 @@
     </footer>
 
     <!-- ✅ IMPORT MOCK DATA + JS -->
+
     <script type="module">
         import mockEvents from './data/mock-events.js';
 

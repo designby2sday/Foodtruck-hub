@@ -3,79 +3,87 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Upgrade to Access – Food Truck Hub</title>
-  <link rel="stylesheet" href="styles/truck.css">
-  
+  <title>Find Events | Food Truck Hub</title>
+  <link rel="stylesheet" href="truck.css" />
 </head>
 <body>
-  <header>
+    <link rel="stylesheet" href="style.css" />
+
+  <nav class="navbar">
     <h1>Food Truck Hub</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="signup.html">Sign Up</a></li>
-        <li><a href="find-events-upgrade.html" class="active">Find Events</a></li>
-      </ul>
-    </nav>
-  </header>
+    <a href="dashboard.html">Dashboard</a>
+  </nav>
 
-  <main class="upgrade-container">
-    <h2>🚫 Find Events is a Premium Feature</h2>
-    <p>Unlock your access by choosing a plan below.</p>
+  <section class="paywall-section">
+    <h1 class="paywall-heading">Unlock Event Access</h1>
 
-    <div class="pricing-tiers">
-
-      <!-- 3 Month Tier -->
-      <div class="pricing-card">
-        <h2>3 Month Access</h2>
+    <div class="pricing-cards">
+      <div class="card">
+        <h2>Starter</h2>
         <p class="price">$99</p>
-        <p class="tier-description">Access events with no calendar syncing.</p>
-        <ul class="features">
-          <li>View and apply for events</li>
-          <li>Standard support</li>
-          <li>No calendar syncing</li>
+        <p class="term">Every 3 Months</p>
+        <ul>
+          <li>Basic Event Access</li>
+          <li>Email Notifications</li>
         </ul>
-        <button disabled>Coming Soon</button>
+        <button onclick="upgrade('starter')" class="select-btn">Choose Starter</button>
       </div>
 
-      <!-- 6 Month Tier (Highlighted) -->
-      <div class="pricing-card middle">
-        <h2>6 Month Access</h2>
+      <div class="card featured">
+        <h2>Pro</h2>
         <p class="price">$299</p>
-        <p class="tier-description">Standard access to all events with added convenience.</p>
-        <ul class="features">
-          <li>Everything in 3-Month plan</li>
-          <li>Calendar syncing</li>
-          <li>Email reminders</li>
-          <li>Limited vendor communication</li>
+        <p class="term">Every 6 Months</p>
+        <ul>
+          <li>All Starter Features</li>
+          <li>Calendar Integration</li>
+          <li>Priority Support</li>
         </ul>
-        <button disabled>Most Popular</button>
+        <button onclick="upgrade('pro')" class="select-btn">Upgrade to Pro</button>
       </div>
 
-      <!-- 12 Month Tier -->
-      <div class="pricing-card">
-        <h2>12 Month Access</h2>
+      <div class="card">
+        <h2>Pro Elite</h2>
         <p class="price">$499</p>
-        <p class="tier-description">Full premium features and support.</p>
-        <ul class="features">
-          <li>Everything in 6-Month plan</li>
-          <li>Premium calendar tools</li>
-          <li>Priority support</li>
-          <li>Featured vendor placement</li>
-          <li>Early access to top events</li>
-          <li>Direct messaging with vendors</li>
+        <p class="term">Yearly</p>
+        <ul>
+          <li>All Pro Features</li>
+          <li>Featured Listings</li>
+          <li>Direct Vendor Messaging</li>
         </ul>
-        <button disabled>Best Value</button>
+        <button onclick="upgrade('elite')" class="select-btn">Go Elite</button>
       </div>
-
     </div>
+  </section>
 
-    <p class="login-link">Already a premium member? <a href="login.html">Log in</a></p>
-  </main>
+  <section id="events" class="events-section" style="display:none;">
+    <h2>🎉 Events Near You</h2>
+    <div class="event-card">
+      <h3>Farmville First Fridays</h3>
+      <p>📍 Farmville, VA</p>
+      <p>📅 Sept 12, 2025</p>
+    </div>
+    <div class="event-card">
+      <h3>Foodie Fest Lynchburg</h3>
+      <p>📍 Lynchburg, VA</p>
+      <p>📅 Sept 21, 2025</p>
+    </div>
+  </section>
 
-  <footer>
-    <p>© 2025 Food Truck Hub. All rights reserved.</p>
-  </footer>
+  <script>
+    function upgrade(plan) {
+      localStorage.setItem("accessTier", plan);
+      document.querySelector(".paywall-section").style.display = "none";
+      document.getElementById("events").style.display = "block";
+      alert(`🎉 You've unlocked event access with the ${plan.toUpperCase()} plan!`);
+    }
+
+    // If user already upgraded, skip paywall
+    const savedTier = localStorage.getItem("accessTier");
+    if (savedTier) {
+      document.querySelector(".paywall-section").style.display = "none";
+      document.getElementById("events").style.display = "block";
+    }
+  </script>
+
 </body>
 </html>
