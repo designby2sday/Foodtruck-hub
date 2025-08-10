@@ -238,6 +238,18 @@ document.getElementById('outlookCalendarBtn').addEventListener('click', () => {
 // ✅ Initialize UI on page load
 updateCalendarUI();
 </script>
+<script>
+  // Auto-add `.active` class to the current nav link
+  const currentPage = window.location.pathname.split("/").pop();
+
+  document.querySelectorAll("nav a").forEach(link => {
+    const linkPage = link.getAttribute("href");
+    if (linkPage === currentPage) {
+      link.classList.add("active");
+    }
+  });
+</script>
+
 
 </body>
 </html>

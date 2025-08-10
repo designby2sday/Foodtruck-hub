@@ -1,9 +1,17 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-// ✅ Tell Express to serve files in the "public" folder
+// ✅ Serve all static files in the public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ✅ Start the server
-app.listen(5000, () => console.log('🚀 Server running on http://localhost:5000'));
+// ✅ Point root "/" to the actual homepage inside truck/client
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/truck/client/index.html'));
+});
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server is running on http://localhost:${PORT}`);
+});
+
