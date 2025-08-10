@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚧 Food Truck Hub Dev Sitemap</title>
+    <link rel="stylesheet" href="styles/truck.css">
+    <style>
+        body {
+            background: #f5f5f5;
+            font-family: 'Poppins', sans-serif;
+            padding: 2rem;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 1rem;
+        }
+        .section {
+            margin-top: 2rem;
+        }
+        .page-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        .page-list li {
+            margin: 0.5rem 0;
+        }
+        .page-list a {
+            color: #008C8C;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .page-list a:hover {
+            text-decoration: underline;
+        }
+        .note {
+            font-size: 0.85rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <script>
+  const password = prompt("Enter Dev Access Password:");
+  if (password !== "taco-truck") {
+    alert("Access Denied");
+    window.location.href = "index.html";
+  }
+</script>
+
+    <h1>🚧 Food Truck Hub – Dev Sitemap</h1>
+    <p class="note">This page is for <strong>testing only</strong> and will be removed before launch.</p>
+
+    <div class="section">
+        <h2>Truck Side Pages</h2>
+        <ul class="page-list">
+            <li><a href="index.html" target="_blank">🏠 Home Page</a></li>
+            <li><a href="login.html" target="_blank">🔐 Login</a></li>
+            <li><a href="signup.html" target="_blank">📝 Sign Up</a></li>
+            <li><a href="dashboard.html" target="_blank">📊 Dashboard</a></li>
+            <li><a href="find-events.html" target="_blank">🎟️ Find Events</a></li>
+            <li><a href="paywall.html" target="_blank">💳 Paywall</a></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Vendor Side Pages (coming soon)</h2>
+        <ul class="page-list">
+            <li><a href="../vendor/index.html" target="_blank">🏠 Vendor Home</a></li>
+            <li><a href="../vendor/login.html" target="_blank">🔐 Vendor Login</a></li>
+            <li><a href="../vendor/signup.html" target="_blank">📝 Vendor Sign Up</a></li>
+            <li><a href="../vendor/dashboard.html" target="_blank">📊 Vendor Dashboard</a></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Dev Tools</h2>
+        <ul class="page-list">
+            <li><a href="dev-sitemap.html">🗺️ Refresh Dev Sitemap</a></li>
+        </ul>
+    </div>
+    <script src="scripts/global.js"></script>
+
+</body>
+</html>

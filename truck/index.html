@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Truck Hub – Truck Side</title>
+    <link rel="stylesheet" href="styles/truck.css">
+</head>
+<body>
+    <!-- ✅ HEADER -->
+    <header>
+        <img src="images/logo-foodtruck.png" alt="Food Truck Hub Logo" class="logo">
+        <nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="signup.html">Sign Up</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="#" id="find-events-link" onclick="handleFindEventsClick(event)">Find Events</a></li>
+
+    
+
+  </ul>
+</nav>
+
+    </header>
+
+    <!-- ✅ HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Next Big Gig Starts Here</h1>
+            <p>Join Food Truck Hub HQ and gain instant access to the best events, festivals, and catering gigs near you.</p>
+            <a href="signup.html" class="cta-btn">Sign Up Now</a>
+            <p>Are you a vendor?</p>
+            <li class="vendor-link"><a href="vendor-hub.html">Go To Vendor Hub</a></li>
+    </section>
+
+    <!-- ✅ HOW IT WORKS SECTION -->
+    <section class="how-it-works">
+        <h2>How Food Truck Hub HQ Works for You</h2>
+        <div class="steps">
+            <div class="step">
+                <img src="images/icon-browse.png" alt="Browse Events" class="step-icon">
+                <h3>Browse Events</h3>
+                <p>See all the local festivals, fairs, and gigs looking for trucks.</p>
+            </div>
+
+            <div class="arrow">➔</div>
+
+            <div class="step">
+                <img src="images/icon-apply.png" alt="Apply" class="step-icon">
+                <h3>Apply Instantly</h3>
+                <p>With one click, show interest and event organizers see your profile.</p>
+            </div>
+
+            <div class="arrow">➔</div>
+
+            <div class="step">
+                <img src="images/icon-book.png" alt="Book Gigs" class="step-icon">
+                <h3>Book More Gigs</h3>
+                <p>Get confirmed for events and fill up your calendar fast.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ WHY JOIN SECTION -->
+    <section class="why-join">
+        <h2>Why Every Truck Needs Food Truck Hub</h2>
+        <div class="benefits">
+            <div class="benefit">
+                <span class="icon">🎯</span>
+                <p><strong>More Bookings, Less Hustle:</strong> No more chasing leads on Facebook.</p>
+            </div>
+            <div class="benefit">
+                <span class="icon">📅</span>
+                <p><strong>Your Calendar, Simplified:</strong> View all upcoming events in one dashboard.</p>
+            </div>
+            <div class="benefit">
+                <span class="icon">💸</span>
+                <p><strong>Boost Your Bottom Line:</strong> Spend more time serving customers, not searching for gigs.</p>
+            </div>
+            <div class="benefit">
+                <span class="icon">🌎</span>
+                <p><strong>Expand Your Reach:</strong> Meet vendors & organizers you wouldn’t find otherwise.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ TESTIMONIALS SECTION -->
+    <section class="testimonials">
+        <h2>What Truck Owners Are Saying</h2>
+        <div class="testimonial-cards">
+            <div class="testimonial">
+                <p>“Before Food Truck Hub, we had empty weekends. Now we’re booked two months out!”</p>
+                <h4>- Tina, Tacos on Wheels</h4>
+            </div>
+            <div class="testimonial">
+                <p>“This is the easiest money we’ve made — I wish this existed years ago.”</p>
+                <h4>- Marcus, Grill King BBQ</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ FINAL CTA -->
+    <section class="final-cta">
+        <h2>Don’t Watch Other Trucks Take the Gigs — Grab Yours.</h2>
+        <a href="signup.html" class="cta-btn">Sign Up Now</a>
+    </section>
+
+    <!-- ✅ FOOTER -->
+    <footer>
+        <p>© 2025 Food Truck Hub. All Rights Reserved.</p>
+        <p style="text-align:center; font-size:0.7rem; opacity:0.3;">
+  <a href="dev-sitemap.html" style="color:white;" title="Dev Access">.</a>
+</p>
+
+    </footer>
+
+    <script src="scripts/app.js"></script>
+    <script>
+  function handleFindEventsClick(event) {
+    event.preventDefault(); // stops the page from doing nothing or jumping to "#"
+
+    // Simulated user state
+    const user = {
+      isLoggedIn: true,
+      isPremium: false
+    };
+
+    if (!user.isLoggedIn) {
+      window.location.href = 'login.html';
+    } else if (!user.isPremium) {
+      window.location.href = 'find-events-upgrade.html';
+    } else {
+      window.location.href = 'find-events.html';
+    }
+  }
+</script>
+<script>
+  // Auto-add `.active` class to the current nav link
+  const currentPage = window.location.pathname.split("/").pop();
+
+  document.querySelectorAll("nav a").forEach(link => {
+    const linkPage = link.getAttribute("href");
+    if (linkPage === currentPage) {
+      link.classList.add("active");
+    }
+  });
+</script>
+
+
+</body>
+</html>

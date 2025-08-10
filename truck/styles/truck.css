@@ -1,0 +1,1278 @@
+/* ---------- GLOBAL STYLES ---------- */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, sans-serif;
+    background: #fff;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* ---------- HEADER ---------- */
+header {
+    background: #FF6B35; /* orange */
+    padding: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+}
+
+/* ✅ NAV BAR FIX */
+header nav {
+    width: 100%;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: space-evenly; /* evenly spreads links */
+    align-items: center;
+    flex-wrap: wrap; /* allows wrapping if needed */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    gap: 1rem; /* adds breathing space between links */
+}
+
+header nav li {
+    flex: 1; /* each link takes equal width space */
+    text-align: center;
+}
+
+header nav a {
+    display: block;
+    padding: 0.8rem;
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+}
+
+
+/* ---------- HERO SECTION ---------- */
+.hero {
+    text-align: center;
+    padding: 5rem 1rem;
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 50%, #FFD166 100%);
+    color: white;
+    position: relative;
+}
+
+.hero h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 520px;
+    margin: 0 auto 1.5rem auto;
+    opacity: 0.95;
+    font-weight: 400;
+}
+
+.cta-btn {
+    background: #008C8C;
+    color: white;
+    padding: 1rem 1.6rem;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: inline-block;
+    margin-bottom: 1.5rem;   /* ✅ adds gap below the button */
+}
+
+
+
+.cta-btn:hover {
+    background: #006D6D;
+    transform: translateY(-3px);
+}
+
+/* ---------- LOGIN PAGE ---------- */
+.login-section {
+    background: #fdfdfd;
+    max-width: 400px;
+    margin: 4rem auto;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-section h2 {
+    margin-bottom: 1.5rem;
+    color: #FF6B35;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.login-form label {
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.login-form input {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+.login-form input:focus {
+    border: 1px solid #008C8C;
+    outline: none;
+}
+
+.login-btn {
+    background: #FF6B35;
+    color: white;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.login-btn:hover {
+    background: #e65b2c;
+}
+
+.signup-link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.signup-link a {
+    color: #008C8C;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+/* ---------- DASHBOARD PAGE ---------- */
+
+.dashboard-hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: #008C8C; /* teal banner */
+    color: white;
+}
+
+.dashboard-hero h2 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.event-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.event-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+}
+
+.event-card h3 {
+    margin-bottom: 0.8rem;
+    color: #FF6B35;
+}
+
+.apply-btn {
+    margin-top: 1rem;
+    background: #FF6B35;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.apply-btn:hover {
+    background: #e65b2c;
+}
+/* ---------- SIGNUP PAGE ---------- */
+.signup-section {
+    background: #fdfdfd;
+    max-width: 450px;
+    margin: 4rem auto;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.signup-section h2 {
+    margin-bottom: 1.5rem;
+    color: #FF6B35;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.signup-form label {
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.signup-form input {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+.signup-form input:focus {
+    border: 1px solid #008C8C;
+    outline: none;
+}
+
+.signup-btn {
+    background: #FF6B35;
+    color: white;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.signup-btn:hover {
+    background: #e65b2c;
+}
+
+.login-link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.login-link a {
+    color: #008C8C;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+.vendor-link {
+    margin-top: 2rem;        /* adds breathing space below the Sign Up button */
+    font-size: 1rem;
+    line-height: 1.4;
+    display: block;
+}
+
+.vendor-link a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: underline;
+    background: rgba(0,0,0,0.2);  /* subtle highlight behind the link for visibility */
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+}
+@media (max-width: 600px) {
+    .cta-btn {
+        margin-bottom: 1rem;
+    }
+}
+/* ---------- HERO SECTION ---------- */
+.hero {
+    background: linear-gradient(135deg, rgba(255,107,53,0.9), rgba(0,140,140,0.9)),
+                url('images/hero-bg.jpg') center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 5rem 2rem;
+}
+.hero-content h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 1.5rem auto;
+}
+
+/* ---------- HOW IT WORKS ---------- */
+.how-it-works {
+    background: #f9f9f9;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+.how-it-works h2 {
+    font-size: 2rem;
+    color: #FF6B35;
+    margin-bottom: 2rem;
+}
+.steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.step {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    max-width: 220px;
+    flex: 1;
+}
+.step-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+}
+.arrow {
+    font-size: 2rem;
+    color: #008C8C;
+}
+
+/* ---------- WHY JOIN ---------- */
+.why-join {
+    padding: 4rem 2rem;
+    background: #fff;
+    text-align: center;
+}
+.why-join h2 {
+    color: #FF6B35;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+.benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+.benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    text-align: left;
+}
+.benefit .icon {
+    font-size: 1.5rem;
+}
+
+/* ---------- TESTIMONIALS ---------- */
+.testimonials {
+    background: #f9f9f9;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+.testimonials h2 {
+    color: #FF6B35;
+    margin-bottom: 2rem;
+}
+.testimonial-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+.testimonial {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    max-width: 300px;
+}
+
+/* ---------- FINAL CTA ---------- */
+.final-cta {
+    background: #008C8C;
+    color: #fff;
+    text-align: center;
+    padding: 3rem 2rem;
+}
+.final-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+@media (max-width: 700px) {
+    .steps {
+        flex-direction: column;  /* stacks the steps on mobile */
+        gap: 1rem;
+    }
+    .arrow {
+        display: none; /* hides arrows on small screens */
+    }
+}
+/* ---------- PAYWALL PAGE ---------- */
+.paywall {
+    text-align: center;
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ✅ FLEX CONTAINER FOR DESKTOP */
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* ✅ PRICING BOX STYLE */
+.pricing-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.pricing-box:hover {
+    transform: translateY(-5px);
+}
+
+.pricing-box h3 {
+    color: #FF6B35;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.price {
+    font-size: 2rem;
+    color: #008C8C;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+.pricing-box ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-box li {
+    margin: 0.5rem 0;
+    font-weight: 500;
+}
+
+/* ✅ Highlighted middle tier */
+.highlighted {
+    position: relative;
+    z-index: 2;
+    border-radius: 12px;
+    padding: 2rem;
+    transform: scale(1.05);
+    background: #fff;
+    border: 4px solid transparent;  /* needed for border-image */
+    border-image: linear-gradient(270deg, #FF6B35, #008C8C, #FF6B35) 1;
+    animation: borderGradient 6s linear infinite;
+}
+
+
+.badge {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: #FF6B35;
+    color: #fff;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* ✅ STACK ON MOBILE */
+@media (max-width: 800px) {
+    .pricing-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .highlighted {
+        transform: scale(1);
+    }
+}
+
+@keyframes borderGradient {
+    0% {
+        border-image-source: linear-gradient(0deg, #FF6B35, #008C8C, #FF6B35);
+    }
+    50% {
+        border-image-source: linear-gradient(180deg, #FF6B35, #008C8C, #FF6B35);
+    }
+    100% {
+        border-image-source: linear-gradient(360deg, #FF6B35, #008C8C, #FF6B35);
+    }
+}
+
+/* ---------- FIND EVENTS PAGE ---------- */
+.filter-bar {
+    background: #f9f9f9;
+    padding: 2rem;
+    text-align: center;
+}
+
+.filters {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filters select,
+.filters input {
+    padding: 0.6rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.filter-btn {
+    background: #FF6B35;
+    color: #fff;
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.filter-btn:hover {
+    background: #e65b2c;
+}
+
+.event-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.event-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+.event-card:hover {
+    transform: translateY(-5px);
+}
+
+.book-btn {
+    margin-top: 1rem;
+    background: #008C8C;
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.book-btn:hover {
+    background: #006d6d;
+}
+
+.no-results {
+    grid-column: 1/-1;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+}
+/* ---------- DASHBOARD STYLES ---------- */
+.dashboard-hero {
+    text-align: center;
+    background: #f9f9f9;
+    padding: 3rem 2rem;
+}
+.dashboard-hero h1 {
+    font-size: 2.2rem;
+    color: #FF6B35;
+}
+.dashboard-hero p {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    color: #333;
+}
+
+/* ✅ Dashboard Grid Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+/* ✅ Cards */
+.dash-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* ✅ Buttons */
+.dash-btn {
+    background: #008C8C;
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.dash-btn:hover {
+    background: #006d6d;
+}
+.connect-btn {
+    background: #FF6B35;
+}
+.connect-btn:hover {
+    background: #e65b2c;
+}
+.downgrade-btn {
+    background: #ccc;
+    color: #333;
+}
+.downgrade-btn:hover {
+    background: #bbb;
+}
+
+/* ✅ Activity List */
+.activity-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.activity-list li {
+    margin-bottom: 0.5rem;
+}
+
+/* ✅ Tier Badge */
+.badge-tier {
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #fff;
+}
+.badge-tier.pro {
+    background: #FF6B35;
+}
+.badge-tier.elite {
+    background: #008C8C;
+}
+.badge-tier.starter {
+    background: #aaa;
+}
+
+/* ✅ Notes */
+.note {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+/* ---------- EDIT PROFILE STYLES ---------- */
+.edit-profile-section {
+    max-width: 600px;
+    margin: 3rem auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.edit-profile-section h1 {
+    text-align: center;
+    color: #FF6B35;
+    margin-bottom: 1rem;
+}
+
+.edit-note {
+    text-align: center;
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.edit-profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.edit-profile-form label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+    text-align: left;
+}
+
+.edit-profile-form input {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.edit-profile-form input:focus {
+    border-color: #008C8C;
+    outline: none;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.save-btn {
+    background: #008C8C;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.save-btn:hover {
+    background: #006d6d;
+}
+
+.cancel-btn {
+    background: #ccc;
+    color: #333;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.cancel-btn:hover {
+    background: #bbb;
+}
+.vendor-link {
+   flex-basis: 100%; /* forces it to span full width */
+   text-align: center;
+}
+
+.login-link {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* NAV */
+.navbar {
+  background: #1C1C1C;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* SECTIONS */
+section {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+/* ---------- PAYWALL SECTION STYLES ---------- */
+.paywall-section {
+  padding: 4rem 1rem;
+  background: #fff;
+  text-align: center;
+}
+
+.paywall-heading {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #1C1C1C;
+}
+
+/* Cards Grid */
+.pricing-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Card Style */
+.card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+/* Featured Pro Card Glow */
+.card.featured::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  z-index: -1;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2EC4B6, #FF7F32, #FFD60A);
+  animation: glowPulse 6s linear infinite;
+}
+
+@keyframes glowPulse {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Text inside card */
+.card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #1C1C1C;
+}
+
+.price {
+  font-size: 2rem;
+  color: #E63946;
+  font-weight: bold;
+}
+
+.term {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.card ul li {
+  padding: 0.4rem 0;
+  color: #333;
+}
+
+/* CTA Button */
+.select-btn {
+  background: #FF7F32;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.select-btn:hover {
+  background: #e76d1c;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .pricing-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+}
+
+/* === [2025-08-06] FIND EVENTS UPGRADE SECTION === */
+
+.find-events-upgrade {
+  padding: 4rem 1rem;
+  background: #fff;
+  text-align: center;
+}
+
+.find-events-upgrade h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #1C1C1C;
+}
+
+.find-events-plans {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.find-events-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.find-events-card:hover {
+  transform: scale(1.03);
+}
+
+/* === [2025-08-06] Subtle Featured Glow & Badge Animation === */
+
+.find-events-card.featured {
+  position: relative;
+  border: 2px solid #FF7F32;
+  box-shadow: 0 0 12px rgba(255, 127, 50, 0.3);
+  z-index: 1;
+}
+
+/* Orange Glow using ::before */
+.find-events-card.featured::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 16px;
+  z-index: -1;
+  background: rgba(255, 127, 50, 0.1);
+  box-shadow: 0 0 20px rgba(255, 127, 50, 0.3);
+  opacity: 1;
+}
+
+/* Badge base styles */
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: #FF7F32;
+  color: white;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 8px;
+  opacity: 0;
+  transform: scale(0.5) translateY(-50px);
+  pointer-events: none;
+}
+
+/* SLAM-IN animation triggered by .pop class */
+.popular-badge.pop {
+  animation: slamIn 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+@keyframes slamIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(-50px);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.2) translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+
+
+.find-events-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #1C1C1C;
+}
+
+.find-events-price {
+  font-size: 2rem;
+  color: #E63946;
+  font-weight: bold;
+}
+
+.find-events-term {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.find-events-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.find-events-card ul li {
+  padding: 0.4rem 0;
+  color: #333;
+}
+
+/* CTA Button */
+.find-events-btn {
+  background: #FF7F32;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.find-events-btn:hover {
+  background: #e76d1c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .find-events-plans {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .find-events-card {
+    width: 90%;
+  }
+}
+/* === [2025-08-06] Unified Pricing Card Styling === */
+
+.pricing-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.pricing-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+.pricing-box:hover {
+  transform: scale(1.03);
+}
+
+.pricing-box h3 {
+  font-size: 1.5rem;
+  color: #FF6B35;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-size: 2rem;
+  color: #008C8C;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.billing-cycle {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.pricing-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.pricing-box ul li {
+  margin: 0.4rem 0;
+  font-weight: 500;
+}
+
+.cta-btn {
+  background: #FF7F32;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: #e76d1c;
+}
+
+/* 🔥 Glowing Border for Featured Plan */
+.pricing-box.highlighted {
+  border: 4px solid transparent;
+  border-image: linear-gradient(270deg, #FF6B35, #FFD60A, #FF7F32) 1;
+  animation: borderGlow 6s linear infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes borderGlow {
+  0% {
+    border-image-source: linear-gradient(0deg, #FF6B35, #FFD60A, #FF7F32);
+  }
+  50% {
+    border-image-source: linear-gradient(180deg, #FF6B35, #FFD60A, #FF7F32);
+  }
+  100% {
+    border-image-source: linear-gradient(360deg, #FF6B35, #FFD60A, #FF7F32);
+  }
+}
+
+/* 🏷️ Popular Badge Slam Animation */
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: #FF7F32;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 8px;
+  opacity: 0;
+  transform: scale(0.5) translateY(-50px);
+  pointer-events: none;
+}
+
+.popular-badge.pop {
+  animation: slamIn 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+}
+
+@keyframes slamIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(-50px);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.2) translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pricing-box {
+    width: 90%;
+  }
+}
+
+.current-plan-badge {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  background: #999;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 2;
+}

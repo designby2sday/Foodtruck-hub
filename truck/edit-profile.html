@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile – Food Truck Hub</title>
+  <link rel="stylesheet" href="styles/truck.css">
+</head>
+<body>
+  <!-- ✅ HEADER -->
+  <header>
+    <img src="images/logo-placeholder.png" alt="Food Truck Hub Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="find-events.html" class="find-events-link">Find Events</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="paywall.html">Subscription</a></li>
+        <li><a href="login.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ✅ EDIT PROFILE FORM -->
+  <section class="edit-profile-section">
+    <h1>Edit Profile</h1>
+    <p class="edit-note">Update your truck’s details and account information below.</p>
+
+    <form class="edit-profile-form" id="editProfileForm">
+      <!-- Truck Name -->
+      <label for="truckName">Truck Name</label>
+      <input type="text" id="truckName" name="truckName" placeholder="Enter your truck name" required>
+
+      <!-- Owner Name -->
+      <label for="ownerName">Owner Name</label>
+      <input type="text" id="ownerName" name="ownerName" placeholder="Enter owner's full name" required>
+
+      <!-- Email -->
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <!-- Phone -->
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+
+      <!-- Address -->
+      <label for="address">Business Address</label>
+      <input type="text" id="address" name="address" placeholder="Enter your business address">
+
+      <!-- Buttons -->
+      <div class="form-buttons">
+        <button type="submit" class="save-btn">💾 Save Changes</button>
+        <a href="dashboard.html" class="cancel-btn">Cancel</a>
+      </div>
+    </form>
+  </section>
+
+  <!-- ✅ FOOTER -->
+  <footer>
+    <p>© 2025 Food Truck Hub. All Rights Reserved.</p>
+  </footer>
+
+  <!-- ✅ GLOBAL SCRIPT -->
+  <script src="scripts/global.js"></script>
+
+  <!-- ✅ MOCK SAVE SCRIPT -->
+  <script>
+    // ✅ Pre-fill the form with saved data (if any)
+    const profileData = JSON.parse(localStorage.getItem('profileData')) || {};
+
+    document.getElementById('truckName').value = profileData.truckName || '';
+    document.getElementById('ownerName').value = profileData.ownerName || '';
+    document.getElementById('email').value = profileData.email || '';
+    document.getElementById('phone').value = profileData.phone || '';
+    document.getElementById('address').value = profileData.address || '';
+
+    // ✅ Save changes to localStorage
+    document.getElementById('editProfileForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const updatedProfile = {
+        truckName: document.getElementById('truckName').value,
+        ownerName: document.getElementById('ownerName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        address: document.getElementById('address').value
+      };
+
+      localStorage.setItem('profileData', JSON.stringify(updatedProfile));
+
+      alert("✅ Profile updated successfully!");
+
+      // Redirect back to dashboard
+      window.location.href = 'dashboard.html';
+    });
+  </script>
+</body>
+</html>

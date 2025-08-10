@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Truck Hub – Truck Signup</title>
+    <link rel="stylesheet" href="styles/truck.css">
+</head>
+<body>
+    <header>
+        <img src="images/logo-placeholder.png" alt="Food Truck Hub Logo" class="logo">
+        <nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="signup.html">Sign Up</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="#" class="find-events-link">Find Events</a></li>
+  </ul>
+</nav>
+    </header>
+
+    <main>
+        <section class="signup-section">
+            <h2>Create Your Truck Account</h2>
+            <form class="signup-form">
+                <label for="truck-name">Truck Name</label>
+                <input type="text" id="truck-name" placeholder="Your truck's name" required>
+
+                <label for="owner-name">Owner Name</label>
+                <input type="text" id="owner-name" placeholder="Your full name" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="you@example.com" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Create a password" required>
+
+                <label for="cuisine">Type of Cuisine</label>
+                <input type="text" id="cuisine" placeholder="Tacos, BBQ, Ice Cream..." required>
+
+                <button type="submit" class="signup-btn">Sign Up</button>
+                <p class="login-link">Already have an account? <a href="login.html">Log in here</a></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Food Truck Hub. All Rights Reserved.</p>
+        <p style="text-align:center; font-size:0.7rem; opacity:0.3;">
+  <a href="dev-sitemap.html" style="color:white;" title="Dev Access">.</a>
+</p>
+
+    </footer>
+
+    <script src="scripts/truck.js"></script>
+    <script>
+   // ✅ TEMPORARY DEV TOGGLE
+   const userIsPaid = true;  // ✅ change to false to force paywall
+
+   document.querySelectorAll('a.find-events-link').forEach(link => {
+       link.href = userIsPaid ? "find-events.html" : "paywall.html";
+   });
+</script>
+<script src="scripts/global.js"></script>
+<script>
+  // Auto-add `.active` class to the current nav link
+  const currentPage = window.location.pathname.split("/").pop();
+
+  document.querySelectorAll("nav a").forEach(link => {
+    const linkPage = link.getAttribute("href");
+    if (linkPage === currentPage) {
+      link.classList.add("active");
+    }
+  });
+</script>
+
+</body>
+</html>
