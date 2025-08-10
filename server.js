@@ -1,27 +1,41 @@
-// server.js (root, next to package.json)
-require('dotenv').config();                       // ✅ load .env first
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const { createTransport } = require('nodemailer'); // <-- add this
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// ---------- core middleware ----------
-app.use(express.json());                          // ✅ parse JSON bodies
-app.use(express.urlencoded({ extended: true }));  // ✅ parse form bodies
+// 🔍 One-time SMTP verification on boot
+(async () => {
+  try {
+    const t = createTransport({
+      host: 'smtp-relay.brevo.com',
+      port: 587,
+      secure: false,
+      auth: { user: process.env.BREVO_USER, pass: process.env.BREVO_PASS },
+    });
+    await t.verify();
+    console.log('✅ SMTP verify: connection + auth OK');
+  } catch (err) {
+    console.error('❌ SMTP verify failed:', err && (err.response || err.message || err));
+  }
+})();
 
-// ---------- static site ----------
-app.use(express.static(path.join(__dirname, 'public')));
+// middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// static files
+app.use(express.static(path.join(__dirname, 'truck')));
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/truck/client/index.html'));
+  res.sendFile(path.join(__dirname, 'truck/index.html'));
 });
 
-// ---------- API routes ----------
-const emailRoutes = require('./routes/email');    // << make sure this file exists
-app.use('/api/email', emailRoutes);               // POST /api/email/contact
+// routes
+const emailRoutes = require('./truck/routes/email');
+app.use('/api/email', emailRoutes);
 
-// (optional) health check
-app.get('/health', (_, res) => res.json({ ok: true }));
-
+// start server
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on http://localhost:${PORT}`);
 });
